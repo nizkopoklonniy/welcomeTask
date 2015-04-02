@@ -12,12 +12,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
 
-
+/**
+ * Controller for welcome page.
+ */
 @Controller
 @RequestMapping("/")
 public class WelcomeController {
 
-    @RequestMapping(value = "/", method = RequestMethod.POST, produces = "text/html;charset=UTF-8",
+    @RequestMapping(value = "/", method = RequestMethod.POST,
+            produces = "text/html;charset=UTF-8",
             params = {"sex", "nameGuest"})
     public ModelAndView printWelcome(@RequestParam(value = "sex") String sex,
                                      @RequestParam(value = "nameGuest") String nameGuest,
@@ -49,14 +52,19 @@ public class WelcomeController {
         }else{
             model.addAttribute("showAlert", false);
             model.addAttribute("showError", true);
-            model.addAttribute("message", "Incorrect name.");
+            model.addAttribute("message", MESSAGE_INCORRECT_NAME);
         }
 
         return new ModelAndView("welcome", model);
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, produces = "text/html",
-            params = {})
+    /**
+     * Const for incorrect name.
+     */
+    private final String MESSAGE_INCORRECT_NAME = "Incorrect name.";
+
+    @RequestMapping(value = "/", method = RequestMethod.GET,
+            produces = "text/html", params = {})
     public ModelAndView welcome(ModelMap model) {
         model.addAttribute("showAlert", false);
         model.addAttribute("showError", false);
