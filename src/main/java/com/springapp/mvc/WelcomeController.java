@@ -44,10 +44,12 @@ public class WelcomeController {
             message += nameGuest;
 
             model.addAttribute("showAlert", true);
+            model.addAttribute("showError", false);
             model.addAttribute("message", message);
         }else{
-            model.addAttribute("showAlert", true);
-            model.addAttribute("message", "Not valid");
+            model.addAttribute("showAlert", false);
+            model.addAttribute("showError", true);
+            model.addAttribute("message", "Incorrect name.");
         }
 
         return new ModelAndView("welcome", model);
@@ -57,6 +59,7 @@ public class WelcomeController {
             params = {})
     public ModelAndView welcome(ModelMap model) {
         model.addAttribute("showAlert", false);
+        model.addAttribute("showError", false);
 
         return new ModelAndView("welcome", model);
     }

@@ -1,11 +1,9 @@
 body {
-  padding-top: 50px;
-}
-.starter-template {
-  padding: 40px 15px;
-  text-align: center;
+    padding-top: 50px;
 }
 
-#form-hello{
-    width: 400px;
+.starter-template {
+    width: 500px;
+    padding: 40px 15px;
+    text-align: center;
 }

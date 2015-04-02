@@ -50,7 +50,14 @@
 
             <c:choose>
                 <c:when test="${showAlert}">
-                    <div class="alert alert-info" role="alert"> <h1>${message}</h1> </div>
+                    <div class="alert alert-info" role="alert">
+                        <a href="#" class="alert-link">${message}</a>
+                    </div>
+                </c:when>
+                <c:when test="${showError}">
+                    <div class="alert alert-danger" role="alert">
+                        <a href="#" class="alert-link">${message}</a>
+                    </div>
                 </c:when>
             </c:choose>
 
