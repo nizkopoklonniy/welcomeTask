@@ -36,9 +36,4 @@ public class Guest {
     }
 
     private String name;
-
-    @Override
-    public String toString() {
-        return name + sex;
-    }
 }

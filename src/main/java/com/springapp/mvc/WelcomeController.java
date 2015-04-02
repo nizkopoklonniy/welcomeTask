@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/")
@@ -25,26 +25,26 @@ public class WelcomeController {
                                      ModelMap model) throws UnsupportedEncodingException {
 
         if (TextUtils.isLetterSymbols(nameGuest)){
-            /*
-            ManagerGuestImpl manager = new ManagerGuestImpl();
-            List<Guest> guests = manager.getAll();
-
-            String message = "Hello ";
-
-            if (showSex != null)
-                message += sex;
-
-            message += nameGuest;
 
             Guest guest = new Guest();
             guest.setName(nameGuest);
             guest.setSex(sex);
 
-            ManagerGuestImpl managerGuest = new ManagerGuestImpl();
-            managerGuest.addGuest(guest);
-            */
+            ManagerGuestImpl manager = new ManagerGuestImpl();
+
+            if (!manager.isVisited(guest)){
+                manager.addGuest(guest);
+            }
+
+            String message = "Hello ";
+
+            if (showSex != null)
+                message += sex + " ";
+
+            message += nameGuest;
+
             model.addAttribute("showAlert", true);
-            model.addAttribute("message", "Valid");
+            model.addAttribute("message", message);
         }else{
             model.addAttribute("showAlert", true);
             model.addAttribute("message", "Not valid");

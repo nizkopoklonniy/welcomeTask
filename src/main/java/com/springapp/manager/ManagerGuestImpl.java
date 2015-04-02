@@ -46,4 +46,16 @@ public class ManagerGuestImpl implements ManagerGuest {
             }
         }
     }
+
+    @Override
+    public boolean isVisited(Guest newGuest) {
+        List<Guest> guests = getAll();
+
+        for (Guest guest:guests){
+            if (guest.getName() == newGuest.getName())
+                return true;
+        }
+
+        return false;
+    }
 }
