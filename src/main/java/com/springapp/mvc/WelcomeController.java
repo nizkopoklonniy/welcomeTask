@@ -39,7 +39,7 @@ public class WelcomeController {
                 manager.addGuest(guest);
             }
 
-            String message = "Hello ";
+            String message = MESSAGE_WELCOME + " ";
 
             if (showSex != null)
                 message += sex + " ";
@@ -47,16 +47,19 @@ public class WelcomeController {
             message += nameGuest;
 
             model.addAttribute("showAlert", true);
-            model.addAttribute("showError", false);
             model.addAttribute("message", message);
         }else{
-            model.addAttribute("showAlert", false);
             model.addAttribute("showError", true);
             model.addAttribute("message", MESSAGE_INCORRECT_NAME);
         }
 
         return new ModelAndView("welcome", model);
     }
+
+    /**
+     * Welcome message.
+     */
+    private final String MESSAGE_WELCOME = "Hello";
 
     /**
      * Const for incorrect name.
