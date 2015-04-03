@@ -6,4 +6,4 @@ CREATE TABLE guest (<br>
   name VARCHAR(255),<br>
   sex VARCHAR(10));<br><br>
   
-Сервер на котором тестировал TomCat.
+Сервер на котором тестировал - Tomcat.
