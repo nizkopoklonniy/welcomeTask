@@ -1,8 +1,10 @@
 package com.springapp.mvc;
 
 import com.springapp.guest.Guest;
-import com.springapp.manager.ManagerGuestImpl;
+import com.springapp.guest.GuestService;
 import com.springapp.utils.TextUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.io.UnsupportedEncodingException;
+import java.util.UUID;
 
 /**
  * Controller for welcome page.
@@ -18,6 +21,9 @@ import java.io.UnsupportedEncodingException;
 @Controller
 @RequestMapping("/")
 public class WelcomeController {
+
+    @Autowired
+    private GuestService guestService;
 
     @RequestMapping(value = "/", method = RequestMethod.POST,
             produces = "text/html;charset=UTF-8",
@@ -33,10 +39,8 @@ public class WelcomeController {
             guest.setName(nameGuest);
             guest.setSex(sex);
 
-            ManagerGuestImpl manager = new ManagerGuestImpl();
-
-            if (!manager.isVisited(guest)){
-                manager.addGuest(guest);
+            if (guestService.findGuest(nameGuest) == null){
+                guestService.addGuest(guest);
             }
 
             String message = MESSAGE_WELCOME + " ";
