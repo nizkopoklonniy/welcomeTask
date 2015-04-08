@@ -1,21 +1,15 @@
 package com.springapp.guest;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
 /**
  * Guest to welcome page.
  */
+@Document
 public class Guest {
 
     public Guest(){}
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    private int id;
 
     public String getSex() {
         return sex;
@@ -35,5 +29,6 @@ public class Guest {
         this.name = name;
     }
 
+    @Id
     private String name;
 }
